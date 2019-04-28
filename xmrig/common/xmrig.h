@@ -35,7 +35,7 @@ enum Algo {
     CRYPTONIGHT,        /* CryptoNight (2 MB) */
     CRYPTONIGHT_LITE,   /* CryptoNight (1 MB) */
     CRYPTONIGHT_HEAVY,  /* CryptoNight (4 MB) */
-    CRYPTONIGHT_PICO,   /* CryptoNight (256 KB) */
+    CRYPTONIGHT_FEMTO,   /* CryptoNight (256 KB) */
     ALGO_MAX
 };
 
@@ -72,7 +72,7 @@ enum Variant {
     VARIANT_RTO    = 7,  // Modified CryptoNight variant 1 (Arto only)
     VARIANT_2      = 8,  // CryptoNight variant 2
     VARIANT_HALF   = 9,  // CryptoNight variant 2 with half iterations (Masari/Stellite)
-    VARIANT_TRTL   = 10, // CryptoNight Turtle (TRTL)
+    VARIANT_FEMTO   = 10, // CryptoNight Catalans (CAT)
     VARIANT_GPU    = 11, // CryptoNight-GPU (Ryo)
     VARIANT_WOW    = 12, // CryptoNightR (Wownero)
     VARIANT_4      = 13, // CryptoNightR (Monero's variant 4)

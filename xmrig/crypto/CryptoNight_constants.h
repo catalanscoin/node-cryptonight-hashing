@@ -57,20 +57,17 @@ constexpr const size_t   CRYPTONIGHT_HEAVY_MEMORY = 4 * 1024 * 1024;
 constexpr const uint32_t CRYPTONIGHT_HEAVY_MASK   = 0x3FFFF0;
 constexpr const uint32_t CRYPTONIGHT_HEAVY_ITER   = 0x40000;
 
-constexpr const size_t   CRYPTONIGHT_PICO_MEMORY = 96 * 1024; //Altered while building femto
-constexpr const uint32_t CRYPTONIGHT_PICO_MASK   = 0xBFF0;
-constexpr const uint32_t CRYPTONIGHT_TRTL_ITER   = 0x6000;
-    
-constexpr const size_t   CRYPTONIGHT_FEMTO_MEMORY = 96 * 1024; //Cryptonight FEMTO (CAT)
+constexpr const size_t   CRYPTONIGHT_FEMTO_MEMORY = 96 * 1024; //Altered while building femto
 constexpr const uint32_t CRYPTONIGHT_FEMTO_MASK   = 0xBFF0;
 constexpr const uint32_t CRYPTONIGHT_FEMTO_ITER   = 0x6000;
+    
 
 
 template<Algo ALGO> inline constexpr size_t cn_select_memory()           { return 0; }
 template<> inline constexpr size_t cn_select_memory<CRYPTONIGHT>()       { return CRYPTONIGHT_MEMORY; }
 template<> inline constexpr size_t cn_select_memory<CRYPTONIGHT_LITE>()  { return CRYPTONIGHT_LITE_MEMORY; }
 template<> inline constexpr size_t cn_select_memory<CRYPTONIGHT_HEAVY>() { return CRYPTONIGHT_HEAVY_MEMORY; }
-template<> inline constexpr size_t cn_select_memory<CRYPTONIGHT_PICO>()  { return CRYPTONIGHT_PICO_MEMORY; }
+template<> inline constexpr size_t cn_select_memory<CRYPTONIGHT_FEMTO>()  { return CRYPTONIGHT_FEMTO_MEMORY; }
 
 
 inline size_t cn_select_memory(Algo algorithm)
@@ -86,8 +83,8 @@ inline size_t cn_select_memory(Algo algorithm)
     case CRYPTONIGHT_HEAVY:
         return CRYPTONIGHT_HEAVY_MEMORY;
 
-    case CRYPTONIGHT_PICO:
-        return CRYPTONIGHT_PICO_MEMORY;
+    case CRYPTONIGHT_FEMTO:
+        return CRYPTONIGHT_FEMTO_MEMORY;
 
     default:
         break;
@@ -101,7 +98,7 @@ template<Algo ALGO> inline constexpr uint32_t cn_select_mask()           { retur
 template<> inline constexpr uint32_t cn_select_mask<CRYPTONIGHT>()       { return CRYPTONIGHT_MASK; }
 template<> inline constexpr uint32_t cn_select_mask<CRYPTONIGHT_LITE>()  { return CRYPTONIGHT_LITE_MASK; }
 template<> inline constexpr uint32_t cn_select_mask<CRYPTONIGHT_HEAVY>() { return CRYPTONIGHT_HEAVY_MASK; }
-template<> inline constexpr uint32_t cn_select_mask<CRYPTONIGHT_PICO>()  { return CRYPTONIGHT_PICO_MASK; }
+template<> inline constexpr uint32_t cn_select_mask<CRYPTONIGHT_FEMTO>()  { return CRYPTONIGHT_FEMTO_MASK; }
 
 
 inline uint32_t cn_select_mask(Algo algorithm)
@@ -117,8 +114,8 @@ inline uint32_t cn_select_mask(Algo algorithm)
     case CRYPTONIGHT_HEAVY:
         return CRYPTONIGHT_HEAVY_MASK;
 
-    case CRYPTONIGHT_PICO:
-        return CRYPTONIGHT_PICO_MASK;
+    case CRYPTONIGHT_FEMTO:
+        return CRYPTONIGHT_FEMTO_MASK;
 
     default:
         break;
@@ -148,7 +145,7 @@ template<> inline constexpr uint32_t cn_select_iter<CRYPTONIGHT_LITE, VARIANT_1>
 template<> inline constexpr uint32_t cn_select_iter<CRYPTONIGHT_HEAVY, VARIANT_0>()    { return CRYPTONIGHT_HEAVY_ITER; }
 template<> inline constexpr uint32_t cn_select_iter<CRYPTONIGHT_HEAVY, VARIANT_XHV>()  { return CRYPTONIGHT_HEAVY_ITER; }
 template<> inline constexpr uint32_t cn_select_iter<CRYPTONIGHT_HEAVY, VARIANT_TUBE>() { return CRYPTONIGHT_HEAVY_ITER; }
-template<> inline constexpr uint32_t cn_select_iter<CRYPTONIGHT_PICO, VARIANT_TRTL>()  { return CRYPTONIGHT_TRTL_ITER; }
+template<> inline constexpr uint32_t cn_select_iter<CRYPTONIGHT_FEMTO, VARIANT_FEMTO>()  { return CRYPTONIGHT_FEMTO_ITER; }
 
 
 inline uint32_t cn_select_iter(Algo algorithm, Variant variant)
@@ -165,8 +162,8 @@ inline uint32_t cn_select_iter(Algo algorithm, Variant variant)
     case VARIANT_DOUBLE:
         return CRYPTONIGHT_XAO_ITER;
 
-    case VARIANT_TRTL:
-        return CRYPTONIGHT_TRTL_ITER;
+    case VARIANT_FEMTO:
+        return CRYPTONIGHT_FEMTO_ITER;
 
     case VARIANT_RWZ:
     case VARIANT_ZLS:
@@ -187,8 +184,8 @@ inline uint32_t cn_select_iter(Algo algorithm, Variant variant)
     case CRYPTONIGHT_HEAVY:
         return CRYPTONIGHT_HEAVY_ITER;
 
-    case CRYPTONIGHT_PICO:
-        return CRYPTONIGHT_TRTL_ITER;
+    case CRYPTONIGHT_FEMTO:
+        return CRYPTONIGHT_FEMTO_ITER;
 
     default:
         break;
@@ -209,7 +206,7 @@ template<> inline constexpr Variant cn_base_variant<VARIANT_XAO>()    { return V
 template<> inline constexpr Variant cn_base_variant<VARIANT_RTO>()    { return VARIANT_1; }
 template<> inline constexpr Variant cn_base_variant<VARIANT_2>()      { return VARIANT_2; }
 template<> inline constexpr Variant cn_base_variant<VARIANT_HALF>()   { return VARIANT_2; }
-template<> inline constexpr Variant cn_base_variant<VARIANT_TRTL>()   { return VARIANT_2; }
+template<> inline constexpr Variant cn_base_variant<VARIANT_FEMTO>()   { return VARIANT_2; }
 template<> inline constexpr Variant cn_base_variant<VARIANT_GPU>()    { return VARIANT_GPU; }
 template<> inline constexpr Variant cn_base_variant<VARIANT_WOW>()    { return VARIANT_2; }
 template<> inline constexpr Variant cn_base_variant<VARIANT_4>()      { return VARIANT_2; }

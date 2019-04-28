@@ -9,7 +9,7 @@ Algorithms
 * cryptonight (v0, v1, v2, r, half, xtl, msr, rto, xao, gpu, wow, rwz, zls, double)
 * cryptonight-light (v0, v1)
 * cryptonight-heavy (v0, xhv, tube)
-* cryptonight-pico (trtl)
+* cryptonight-femto (trtl)
 
 Usage
 -----
